@@ -18,17 +18,18 @@ refs.btnStart.addEventListener('click', onClickStart);
 refs.btnStop.addEventListener('click', onClickStop);
 
 function onClickStart() {
-    refs.btnStart.disabled = true;
-    refs.btnStop.disabled = false;
+  refs.btnStart.disabled = true;
+  refs.btnStop.disabled = false;
+  refs.body.style.backgroundColor = getRandomHexColor();
 
-    intervalId = setInterval(() => {
-        refs.body.style.backgroundColor = `${getRandomHexColor()}`;
-    }, 1000);
+  intervalId = setInterval(() => {
+    refs.body.style.backgroundColor = getRandomHexColor();
+  }, 1000);
 }
 
 function onClickStop() {
-    refs.btnStart.disabled = false;
-    refs.btnStop.disabled = true;
+  refs.btnStart.disabled = false;
+  refs.btnStop.disabled = true;
 
-    clearInterval(intervalId);
+  clearInterval(intervalId);
 }
