@@ -11,14 +11,13 @@ function submitForm(e) {
   const amount = Number(e.target.elements.amount.value);
 
   for (let i = 1; i <= amount; i += 1) {
-    const position = i;
-    const promDelay = delay + step * (i - 1);
-    createPromise(position, promDelay)
-      .then(({ position, promDelay }) => {
-        Notify.success(`✅ Fulfilled promise ${position} in ${promDelay}ms`);
+    const delayP = delay + step * (i - 1);
+    createPromise(i, delayP)
+      .then(({ position, delay }) => {
+        Notify.success(`✅ Fulfilled promise ${position} in ${delay} ms`);
       })
-      .catch(({ position, promDelay }) => {
-        Notify.failure(`❌ Rejected promise ${position} in ${promDelay}ms`);
+      .catch(({ position, delay }) => {
+        Notify.failure(`❌ Rejected promise ${position} in ${delay} ms`);
       });
   }
 }
